@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mjolner Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #chat { width: 100%; height: calc(90svh - 10rem); border: 1px solid #ccc; overflow-y: scroll; margin-bottom: 10px; resize: vertical; }
+        #message { width: 70%; }
+        #send { width: 20%; }
+        #image { width: 20%; }
+        #username { width: 25%; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Mjolner Chat</h1>
+    <input id="username" type="text" placeholder="Enter your username" maxlength="20">
+    <button id="setUsername">Set Username</button>
+    <div id="chat"></div>
+    <input id="message" type="text" placeholder="Type your message here..." disabled>
+    <input id="image" type="file" accept="image/*" disabled>
+    <button id="send" disabled>Send</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js"></script> <!-- Link to the external script file in the public directory -->
+</body>
+</html>

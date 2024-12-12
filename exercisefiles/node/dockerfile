@@ -1,5 +1,6 @@
 # Create a dockerfile with node image
 
+
 # Create a directory to hold the application code inside the image, this will be the working directory for your application
 
 # Set the working directory to /usr/src/app
@@ -15,3 +16,27 @@
 # Run Nodeserver.js when the container launches
 
 # Write a docker comand to build the image and tag it as mynodeapp
+# Use the official Node.js image from the Docker Hub
+FROM node:14
+
+# Create a directory to hold the application code inside the image, this will be the working directory for your application
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install npm dependencies
+RUN npm install
+
+# Copy the current directory contents into the container at /usr/src/app
+COPY . .
+
+# Make port 4000 available to the world outside this container and route it to 3000
+EXPOSE 3000:3000
+
+
+# Run Nodeserver.js when the container launches
+CMD ["node", "nodeserver.js"]
+
+# Write a docker command to build the image and tag it as mynodeapp
+# docker build -t mynodeapp .
